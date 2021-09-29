@@ -75,7 +75,7 @@ class AlumnosController extends Controller
 
 
 
-         
+         return view('gracias');
 
        // return view ('formato',compact('registro','formato'));
 
