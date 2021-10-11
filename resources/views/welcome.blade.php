@@ -45,6 +45,18 @@
                                         <label for="apellido_materno">Apellido materno</label>
                                         <input id="apellido_materno" type="text" placeholder="Apellido materno" class="form-control" name="apellido_materno"   autofocus required maxlength="30">
                                     </div>
+                                    <div class="col-md-4">
+                                        <label for="plantel">Plantel</label>
+                                        <select  required autofocus id="plantel" name="plantel" class="form-control"data-live-search="true">
+                                            <option  value="TLAQUEPAQUE">TLAQUEPAQUE</option>
+                                            <option  value="AVILA CAMACHO">AVILA CAMACHO</option>
+                                            <option  value="CENTRO HISTORICO">CENTRO HISTORICO</option>
+                                            <option  value="JARDINES DEL BOSQUE">JARDINES DEL BOSQUE</option>
+                                            <option  value="LOMA BONITA">LOMA BONITA</option>
+                                            <option  value="TONALA">TONALA</option>
+                                            <option  value="ONLINE">ONLINE</option>
+                                        </select>
+                                    </div>
                                     
                                     <div class="col-md-4">
                                         <label for="fecha_clase">Fecha</label>

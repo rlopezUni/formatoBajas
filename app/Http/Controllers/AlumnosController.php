@@ -68,10 +68,43 @@ class AlumnosController extends Controller
         $formato->especifica_baja = $request->especifica_baja;
         $formato->save();
 
+        $plantel = $request->plantel;
 
 
-    $mailable = new MandarCorreo($registro);
-    Mail::to('rodrigo.lopez@univer-gdl.edu.mx')->send($mailable);
+        if($plantel == "TLAQUEPAQUE")
+        {
+            $correos = ['gladys.morales@univer-gdl.edu.mx','bessie.sanchez@univer-gdl.edu.mx','guadalupe.martinez@univer-gdl.edu.mx'];
+        }
+        else if ($plantel == "AVILA CAMACHO")
+        {
+            $correos = ['israel.delvalle@univer-gdl.edu.mx','veronica.flores@univer-gdl.edu.mx'];
+        }
+        else if ($plantel == "CENTRO HISTORICO")
+        {
+            $correos = ['alejandra.velazquez@univer-gdl.edu.mx','maria.garcia@univer-gdl.edu.mx'];
+        }
+        else if ($plantel == "JARDINES DEL BOSQUE")
+        {
+            $correos = ['magaly.marquez@univer-gdl.edu.mx','cinthia.robles@univer-gdl.edu.mx'];
+        }
+        else if ($plantel == "LOMA BONITA")
+        {
+            $correos = ['martha.garcia@univer-gdl.edu.mx','margarita.abad@univer-gdl.edu.mx'];
+        }        
+        else if ($plantel == "TONALA")
+        {
+            $correos = ['gladys.morales@univer-gdl.edu.mx','andrea.vazquez@univer-gdl.edu.mx'];
+        }
+        else if ($plantel == "ONLINE")
+        {
+            $correos = 'andrea.caballero@univer-gdl.edu.mx';
+        }
+
+
+
+
+    //$mailable = new MandarCorreo($registro);
+    //Mail::to($correos)->send($mailable);
 
 
 
