@@ -103,8 +103,8 @@ class AlumnosController extends Controller
 
 
 
-    //$mailable = new MandarCorreo($registro);
-    //Mail::to($correos)->send($mailable);
+    $mailable = new MandarCorreo($registro);
+    Mail::to($correos)->send($mailable);
 
 
 
