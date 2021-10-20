@@ -103,8 +103,9 @@ class AlumnosController extends Controller
 
 
 
+
     $mailable = new MandarCorreo($registro);
-    Mail::to($correos)->send($mailable);
+    Mail::to('janet.gil@univer-gdl.edu.mx')->send($mailable);
 
 
 

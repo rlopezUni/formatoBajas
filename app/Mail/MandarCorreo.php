@@ -31,7 +31,7 @@ class MandarCorreo extends Mailable
     {
         return $this
             ->view('correo')
-            ->subject("Notificación de asistencia")
+            ->subject("Solicitud de baja")
             ->with([
                 "registro" => $this->registro,
             ]);

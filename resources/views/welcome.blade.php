@@ -75,8 +75,8 @@
                                         <input id="periodo_actual" type="text"  placeholder="Periodo actual" class="form-control" name="periodo_actual"   autofocus required>
                                     </div>
                                     <div class="col-md-4">
-                                        <label for="curriculum">Curriculum</label>
-                                        <input id="curriculum" type="text"  placeholder="Curriculum" class="form-control" name="curriculum"   autofocus required>
+                                        <label for="curriculum">Carrera</label>
+                                        <input id="curriculum" type="text"  placeholder="Carrera" class="form-control" name="curriculum"   autofocus required>
                                     </div>
                                     <div class="col-md-4">
                                         <label for="telefono_particular">Teléfono particular</label>
