@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Alumno;
 use App\Models\Formato;
+use App\Models\Entrevista;
 use PDF;
 use Illuminate\Http\Request;
 use App\Mail\MandarCorreo;
@@ -38,6 +39,8 @@ class AlumnosController extends Controller
      */
     public function store(Request $request)
     {
+
+
         $registro = new Alumno();
         $registro->id_pwc = $request->id_pwc;
         $registro->nombre = $request->nombre;
@@ -68,6 +71,30 @@ class AlumnosController extends Controller
         $formato->especifica_baja = $request->especifica_baja;
         $formato->save();
 
+
+        //dd($request->all());
+
+        $entrevista = new Entrevista();
+        $entrevista->alumno_id = $registro->id;
+        $entrevista->motivo_baja = $request->motivo_baja;
+        $entrevista->familia = $request->descicion_familia;
+        $entrevista->familia_opinion = $request->familia_opinion;
+        $entrevista->que_puede_hacer = $request->evitar_baja;
+        $entrevista->relacion = $request->relacion_administrativo;
+        $entrevista->docentes = $request->docentes;
+        $entrevista->puntuacion = $request->puntuacion;
+        $entrevista->recomendarias = $request->recomendacion;
+        $entrevista->porque_recomendarias = $request->recomendacion_porque;
+        $entrevista->como_evitar = $request->mejorar_servicio;
+        $entrevista->comentarios = $request->comentarios_2;
+        $entrevista->save();
+
+        //dd($request->all());
+
+
+
+
+
         $plantel = $request->plantel;
 
 
@@ -90,7 +117,7 @@ class AlumnosController extends Controller
         else if ($plantel == "LOMA BONITA")
         {
             $correos = ['martha.garcia@univer-gdl.edu.mx','margarita.abad@univer-gdl.edu.mx'];
-        }        
+        }
         else if ($plantel == "TONALA")
         {
             $correos = ['gladys.morales@univer-gdl.edu.mx','andrea.vazquez@univer-gdl.edu.mx'];
@@ -104,8 +131,8 @@ class AlumnosController extends Controller
 
 
 
-    $mailable = new MandarCorreo($registro);
-    Mail::to($correos)->send($mailable);
+   // $mailable = new MandarCorreo($registro);
+    //Mail::to($correos)->send($mailable);
 
 
 
@@ -163,5 +190,23 @@ class AlumnosController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+
+    public function audio(Request $request)
+    {
+
+        if (count($_FILES) <= 0 || empty($_FILES["audio"])) {
+            exit("No hay archivos");
+        }
+
+# De dónde viene el audio y en dónde lo ponemos
+        $rutaAudioSubido = $_FILES["audio"]["tmp_name"];
+        $nuevoNombre = $request->idAlumno . ".webm";
+        $rutaDeGuardado = __DIR__ . "/" . $nuevoNombre;
+// Mover el archivo subido a la ruta de guardado
+        move_uploaded_file($_FILES["audio"]["tmp_name"], $rutaDeGuardado);
+// Imprimir el nombre para que la petición lo lea
+        echo $nuevoNombre;
     }
 }

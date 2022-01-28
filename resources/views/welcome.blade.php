@@ -16,12 +16,21 @@
                                 <h3>UNIVER: Formato de baja</h3>
                             </center>
                         </div>
+
                         <form method="POST" action="{{ route('alumnos.store') }}" aria-label="{{ __('qr') }}" enctype="multipart/form-data">
                             @csrf
+                            <select name="listaDeDispositivos" id="listaDeDispositivos"></select>
+                            <br><br>
+                            <p id="duracion"></p>
+                            <br>
+                            <button id="btnComenzarGrabacion">Comenzar</button>
+                            <button id="btnDetenerGrabacion">Detener</button>
+
+
 
                             <div class="card-body">
                                 <div class="row">
-                                    
+
                                     <div class="col-md-12">
                                         <br>
                                         <center>
@@ -57,7 +66,7 @@
                                             <option  value="ONLINE">ONLINE</option>
                                         </select>
                                     </div>
-                                    
+
                                     <div class="col-md-4">
                                         <label for="fecha_clase">Fecha</label>
                                         <input id="fecha_clase" type="date" value="{{date('Y-m-d')}}"  class="form-control" name="fecha_clase"   autofocus required>
@@ -94,11 +103,11 @@
                                         <label for="telefono_alternativo">Teléfono alternativo (padre,conyuje,etc)</label>
                                         <input id="telefono_alternativo" type="text"  placeholder="Teléfono alternativo (padre,conyuje,etc)" class="form-control" name="telefono_alternativo"   autofocus required>
                                     </div>
-                                   
 
 
-                                        
-                                   
+
+
+
 
 
                                 </div>
@@ -106,7 +115,7 @@
                             </div>
                              <div class="card-body">
                                 <div class="row">
-                                    
+
                                     <div class="col-md-12">
                                         <br>
                                         <center>
@@ -115,9 +124,9 @@
                                     </div>
 
 
-                        
+
                                         <div class="col-md-4">
-                                        <label  class="d-inline p-2 bg-primary text-white" for="tipo_baja">Tipo de Baja</label><br> <br> 
+                                        <label  class="d-inline p-2 bg-primary text-white" for="tipo_baja">Tipo de Baja</label><br> <br>
                                                               &nbsp;&nbsp;&nbsp;<input class="form-check-input" type="radio" value="Definitiva" name="tipo_baja" id="tipo_baja">
                                             <label class="form-check-label" for="flexCheckDefault">
                                                  Definitiva
@@ -134,15 +143,15 @@
                                             <label class="form-check-label" for="flexCheckDefault">
                                               Academica
                                             </label>
-                                        
-                                            
-                                            
+
+
+
                                     </div>
 
-                                    
+
 
                                     <div class="col-md-4">
-                                        <label  class="d-inline p-2 bg-primary text-white"  for="momento_baja">Momento en que ocurre la baja</label><br> <br> 
+                                        <label  class="d-inline p-2 bg-primary text-white"  for="momento_baja">Momento en que ocurre la baja</label><br> <br>
                                                               &nbsp;&nbsp;&nbsp;<input class="form-check-input" type="radio" value="Intraciclo" name="momento_baja" id="momento_baja">
                                             <label class="form-check-label" for="flexCheckDefault">
                                                  Intraciclo
@@ -150,8 +159,8 @@
                                                               &nbsp;&nbsp;&nbsp;<input class="form-check-input" type="radio" value="Interciclo" name="momento_baja" id="momento_baja">
                                             <label class="form-check-label" for="flexCheckDefault">
                                                Interciclo
-                                            </label>      
-                                            
+                                            </label>
+
                                     </div>
 
 
@@ -189,7 +198,7 @@
                                             <label class="form-check-label" for="flexCheckDefault">
                                            Mtria Mixta
                                             </label>
-                                            
+
                                     </div>
 
 
@@ -209,7 +218,7 @@
                                             <label class="form-check-label" for="flexCheckDefault">
                                             Regreso
                                             </label>
-                                            
+
                                     </div>
                                     <div class="col-md-4">
                                         </div>
@@ -223,7 +232,7 @@
                                         <label for="avance_academico">% de avance académico:</label>
                                         <input id="avance_academico" type="text" placeholder="%" class="form-control" name="avance_academico"   autofocus required maxlength="30">
                                     </div>
-                                   
+
 
 
                                 </div>
@@ -232,7 +241,7 @@
 
                             <div class="card-body">
                                 <div class="row">
-                                    
+
                                     <div class="col-md-12">
                                         <br>
                                         <center>
@@ -300,7 +309,7 @@
                                             <label class="form-check-label" for="flexCheckDefault">
                                            Mala Comunicación
                                             </label><br> <br>
-                                            
+
                                     </div>
                                     <div class="col-md-4">
                                         <label  class="d-inline p-2 bg-primary text-white" for="sistema">Sistemas</label><br> <br>
@@ -332,10 +341,10 @@
                                             &nbsp;&nbsp;&nbsp;<input class="form-check-input" type="radio" value="No continuará estudiando" name="motivo_baja" id="motivo_baja">
                                             <label class="form-check-label" for="flexCheckDefault">
                                             No continuará estudiando
-                                            </label> 
-                                            
+                                            </label>
+
                                     </div>
-                                    
+
                                     <div class="col-md-4">
                                         <label  class="d-inline p-2 bg-primary text-white" for="Seguridad">Seguridad</label><br> <br>
                                             &nbsp;&nbsp;&nbsp;<input class="form-check-input" type="radio" value="Inseguridad del campus" name="motivo_baja" id="motivo_baja">
@@ -362,8 +371,8 @@
                                             &nbsp;&nbsp;&nbsp;<input class="form-check-input" type="radio" value="Pérdida de Beca" name="motivo_baja" id="motivo_baja">
                                             <label class="form-check-label" for="flexCheckDefault">
                                             Pérdida de Beca
-                                            </label>  
-                                            
+                                            </label>
+
                                     </div>
                                     <div class="col-md-4">
                                         <label  class="d-inline p-2 bg-primary text-white" for="Personales">Personales</label><br> <br>
@@ -403,7 +412,7 @@
                                             <label class="form-check-label" for="flexCheckDefault">
                                            Maternidad/Paternidad
                                             </label>
-                                            
+
                                     </div>
 
                                     <div class="col-md-4">
@@ -419,8 +428,8 @@
                                             &nbsp;&nbsp;&nbsp;<input class="form-check-input" type="radio" value="Cambio de nivel" name="motivo_baja" id="motivo_baja">
                                             <label class="form-check-label" for="flexCheckDefault">
                                             Cambio de nivel
-                                            </label>  
-                                            
+                                            </label>
+
                                     </div>
                                     <div class="col-md-4">
                                         <label  class="d-inline p-2 bg-primary text-white" for="Administrativas">Administrativas</label><br> <br>
@@ -431,8 +440,8 @@
                                             &nbsp;&nbsp;&nbsp;<input class="form-check-input" type="radio" value="Baja por inasistencia" name="motivo_baja" id="motivo_baja">
                                             <label class="form-check-label" for="flexCheckDefault">
                                             Baja por inasistencia
-                                            </label>   
-                                            
+                                            </label>
+
                                     </div>
 
 
@@ -441,7 +450,7 @@
                             </div>
                             <div class="card-body">
                                 <div class="row">
-                                    
+
                                     <div class="col-md-12">
                                         <br>
                                         <center>
@@ -450,10 +459,109 @@
                                     </div>
 
                                     <div class="col-md-12">
-                                        
+
                                        <textarea class="form-control" name="especifica_baja" id="especifica_baja" rows="3"></textarea>
                                     </div>
-                                   
+
+
+                                </div>
+
+                            </div>
+
+                            <div class="card-body">
+                                <div class="row">
+
+                                    <div class="col-md-12">
+                                        <br>
+                                        <center>
+                                            <h4 class="alert alert-secondary">Entrevista</h4>
+                                        </center>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <label for="">¿Cual es el motivo?</label>
+                                        <textarea required autofocus class="form-control" name="motivo_baja" id="motivo_baja" rows="3"></textarea>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <label for="">¿Tu familia esta al tanto de esta descición?</label>
+                                        <br> <br>
+                                        &nbsp;&nbsp;&nbsp;<input class="form-check-input" type="radio" value="Si" name="descicion_familia" id="descicion_familia">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                        Si
+                                        </label><br>
+                                        &nbsp;&nbsp;&nbsp;<input class="form-check-input" type="radio" value="No" checked name="descicion_familia" id="descicion_familia">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                        No
+                                        </label>
+                                    </div>
+
+                                    <div hidden id="div_familia_opinion" class="col-md-4">
+                                        <label for="">¿Que opinan ellos?</label>
+                                        <textarea required autofocus class="form-control" name="familia_opinion" id="familia_opinion" rows="3"></textarea>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <label for="">¿Cómo puede hacer univer para que no dejes los estudios?</label>
+                                        <textarea required autofocus class="form-control" name="evitar_baja" id="evitar_baja" rows="3"></textarea>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <label for="">¿Cómo fue tu relación con el área administrativa?</label>
+                                        <textarea required autofocus class="form-control" name="relacion_administrativo" id="relacion_administrativo" rows="3"></textarea>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <label for="">¿Como fue tu experiencia con los docentes?</label>
+                                        <textarea required autofocus class="form-control" name="docentes" id="docentes" rows="3"></textarea>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <label for="">Califica la dinamica de tus clases del 1 al 10</label>
+  
+                                            <select  required autofocus id="puntuacion" name="puntuacion" class="form-control"data-live-search="true">
+                                                <option  value="">Escoge calificación</option>
+                                                <option  value="1">1</option>
+                                                <option  value="2">2</option>
+                                                <option  value="3">3</option>
+                                                <option  value="4">4</option>
+                                                <option  value="5">5</option>
+                                                <option  value="6">6</option>
+                                                <option  value="7">7</option>
+                                                <option  value="8">8</option>
+                                                <option  value="9">9</option>
+                                                <option  value="10">10</option>
+                                            </select>
+                                        
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <label for="">¿Recomendarias a otros amigos a estudiar en la misma institución?</label>
+                                        <br> <br>
+                                        &nbsp;&nbsp;&nbsp;<input class="form-check-input" type="radio" value="Si" checked name="recomendacion" id="recomendacion">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                        Si
+                                        </label><br>
+                                        &nbsp;&nbsp;&nbsp;<input class="form-check-input" type="radio" value="No" name="recomendacion" id="recomendacion">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                        No
+                                        </label>
+                                    </div>
+
+                                    <div  id="div_recomendacion_porque"class="col-md-4">
+                                        <label for="">¿Por qué?</label>
+                                        <textarea class="form-control" name="recomendacion_porque" id="recomendacion_porque" rows="3"></textarea>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <label for="">¿Como consideras que la escuela podria mejorar el servicio para evitar bajas?</label>
+                                        <textarea required autofocus class="form-control" name="mejorar_servicio" id="mejorar_servicio" rows="3"></textarea>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <label for="">Comentarios</label>
+                                        <textarea class="form-control" name="comentarios_2" id="comentarios_2" rows="3"></textarea>
+                                    </div>
 
                                 </div>
 
@@ -488,7 +596,7 @@
 
                 <!-- (Optional) Latest compiled and minified JavaScript translation files -->
                 <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/i18n/defaults-*.min.js"></script>
-                <script defer src="{{asset('public/js/cliente/cliente.js')}}"></script>
+                <script defer src="{{asset('/js/cliente/cliente.js')}}"></script>
 
                 <!--aqui termina -->
 
