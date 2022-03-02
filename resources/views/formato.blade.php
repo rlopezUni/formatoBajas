@@ -418,7 +418,23 @@
             <td style="text-align: center; border: 1px solid black;">Nombre, firma y fecha y sello</td>
             <td style="text-align: center; border: 1px solid black;">Nombre, firma y fecha</td>
         </tr>
-    </table><br>
+    </table>
+    <br>
+    <table id="Autorizaciones2"style="width: 100%; border: 1px solid black;">
+        <tr>
+            <td style="text-align: center; width: 50%; border: 1px solid black;">Dirección Academica</td>
+            <td style="text-align: center; width: 50%; border: 1px solid black;">Éxito Estudiantil</td>
+        </tr>
+        <tr>
+            <td style="height: 100px; border: 1px solid black;"></td>
+            <td style="height: 100px; border: 1px solid black;"></td>
+        </tr>
+        <tr>
+            <td style="text-align: center; border: 1px solid black;">Nombre, firma y fecha y sello</td>
+            <td style="text-align: center; border: 1px solid black;">Nombre, firma y fecha y sello</td>
+        </tr>
+    </table>
+    <br>
     <table id="Comentarios"style="width: 100%; border: 1px solid black;">
         <tr>
            <td style="background-color: grey; border: 1px solid black; color: white;">Motivos de la baja</td> 
