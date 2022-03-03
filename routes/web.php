@@ -22,6 +22,7 @@ Route::resources([
 
 ]);
 Route::post('/mandarAudio', 'App\Http\Controllers\AlumnosController@audio')->name('audio');
+Route::get('/consulta/','App\Http\Controllers\AlumnosController@volver')->name('volver');
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');

@@ -16,7 +16,11 @@
                                 <h3>UNIVER: Formato de baja</h3>
                             </center>
                         </div>
-
+                            <br>
+                            <a href="{{route('alumnos.index')}}">
+                                <button type="button" class="btn btn-dark">Alumnos registrados</button>
+                            </a>
+                            <br>
                         <form method="POST" action="{{ route('alumnos.store') }}" aria-label="{{ __('qr') }}" enctype="multipart/form-data">
                             @csrf
                             <select name="listaDeDispositivos" id="listaDeDispositivos"></select>

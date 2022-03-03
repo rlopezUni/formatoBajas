@@ -18,7 +18,9 @@ class AlumnosController extends Controller
      */
     public function index()
     {
-        //
+        $alumnos = new Alumno();
+        $alumnos = $alumnos->all();
+        return view('alumnos_bajas', compact('alumnos')); 
     }
 
     /**
@@ -166,7 +168,13 @@ class AlumnosController extends Controller
      */
     public function edit($id)
     {
-        //
+        $alumnos = Alumno::findorfail($id);
+        $formatos = new Formato();
+        $entrevista = new Entrevista();
+        $formatos = $formatos->where('alumno_id', $id)->first();
+        $entrevista = $entrevista->where('alumno_id', $id)->first();
+
+        return view('formato_individual', compact('alumnos', 'formatos', 'entrevista'));
     }
 
     /**
@@ -192,6 +200,10 @@ class AlumnosController extends Controller
         //
     }
 
+    public function volver()
+    {
+        return view('welcome');
+    }
 
     public function audio(Request $request)
     {
