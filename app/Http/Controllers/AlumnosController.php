@@ -78,7 +78,7 @@ class AlumnosController extends Controller
 
         $entrevista = new Entrevista();
         $entrevista->alumno_id = $registro->id;
-        $entrevista->motivo_baja = $request->motivo_baja;
+        $entrevista->motivo_baja = $request->motivo_baja_2;
         $entrevista->familia = $request->descicion_familia;
         $entrevista->familia_opinion = $request->familia_opinion;
         $entrevista->que_puede_hacer = $request->evitar_baja;
@@ -153,11 +153,21 @@ class AlumnosController extends Controller
      */
     public function show($id)
     {
-            $registro = Alumno::find($id);
-            $formato = Formato::find($id);
+        $registro = Alumno::find($id);
+        $formato = Formato::find($id);
 
         $pdf = PDF::loadView('formato',compact('registro','formato'))->setOptions(['defaultFont' => 'sans-serif']);
-         return $pdf->download('pruebapdf.pdf');
+        return $pdf->download($registro->id_pwc.'.pdf');
+    }
+
+    public function descargar_audio($id)
+    {
+        $registro = Alumno::find($id);
+
+        $public_path = public_path();
+        $url = $public_path.'/audios/'.$registro->id_pwc.'.webm';
+
+        return response()->download($url);
     }
 
     /**
@@ -212,13 +222,17 @@ class AlumnosController extends Controller
             exit("No hay archivos");
         }
 
-# De dónde viene el audio y en dónde lo ponemos
+        # De dónde viene el audio y en dónde lo ponemos
         $rutaAudioSubido = $_FILES["audio"]["tmp_name"];
         $nuevoNombre = $request->idAlumno . ".webm";
-        $rutaDeGuardado = __DIR__ . "/" . $nuevoNombre;
-// Mover el archivo subido a la ruta de guardado
+        $public_path = public_path();
+        $rutaDeGuardado = $public_path.'/audios/'.$nuevoNombre;
+        //$rutaDeGuardado = __DIR__ . "/" . $nuevoNombre;
+        
+        // Mover el archivo subido a la ruta de guardado
         move_uploaded_file($_FILES["audio"]["tmp_name"], $rutaDeGuardado);
-// Imprimir el nombre para que la petición lo lea
+        
+        // Imprimir el nombre para que la petición lo lea
         echo $nuevoNombre;
     }
 }

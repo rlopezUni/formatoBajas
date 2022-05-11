@@ -484,7 +484,7 @@
 
                                     <div class="col-md-4">
                                         <label for="">¿Cual es el motivo?</label>
-                                        <textarea required autofocus class="form-control" name="motivo_baja" id="motivo_baja" rows="3"></textarea>
+                                        <textarea required autofocus class="form-control" name="motivo_baja_2" id="motivo_baja_2" rows="3"></textarea>
                                     </div>
 
                                     <div class="col-md-4">
@@ -502,7 +502,7 @@
 
                                     <div hidden id="div_familia_opinion" class="col-md-4">
                                         <label for="">¿Que opinan ellos?</label>
-                                        <textarea required autofocus class="form-control" name="familia_opinion" id="familia_opinion" rows="3"></textarea>
+                                        <textarea class="form-control" name="familia_opinion" id="familia_opinion" rows="3"></textarea>
                                     </div>
 
                                     <div class="col-md-4">

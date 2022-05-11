@@ -27,6 +27,7 @@
                                     <th>Apellido materno</th>
                                     <th>Correo</th>
                                     <th>PDF</th>
+                                    <th>Audio de la entrevista</th>
                                     <th>Información completa</th>
                                 </tr>
                             </thead>
@@ -41,6 +42,13 @@
                                             <center>
                                                 <a href="{{route('alumnos.show', $alumno->id)}}">
                                                     <button type="button" class="btn btn-outline-primary">PDF</button>
+                                                </a>
+                                            </center>
+                                        </td>
+                                        <td>
+                                            <center>
+                                                <a href="{{route('alumno.audio', $alumno->id)}}">
+                                                    <button type="button" class="btn btn-outline-secondary">Audio</button>
                                                 </a>
                                             </center>
                                         </td>
