@@ -32,6 +32,7 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @if(Auth::guest())
                                 @foreach($alumnos as $alumno)
                                     <tr>
                                         <td>{{$alumno->nombre}}</td>
@@ -61,6 +62,39 @@
                                         </td>
                                     </tr>
                                 @endforeach
+                                @else
+                                @foreach($alumnos as $alumno)
+                                 @if($alumno->id_plantel == Auth::user()->id_plantel)
+                                    <tr>
+                                        <td>{{$alumno->nombre}}</td>
+                                        <td>{{$alumno->apellido_paterno}}</td>
+                                        <td>{{$alumno->apellido_materno}}</td>
+                                        <td>{{$alumno->correo}}</td>
+                                        <td>
+                                            <center>
+                                                <a href="{{route('alumnos.show', $alumno->id)}}">
+                                                    <button type="button" class="btn btn-outline-primary">PDF</button>
+                                                </a>
+                                            </center>
+                                        </td>
+                                        <td>
+                                            <center>
+                                                <a href="{{route('alumno.audio', $alumno->id)}}">
+                                                    <button type="button" class="btn btn-outline-secondary">Audio</button>
+                                                </a>
+                                            </center>
+                                        </td>
+                                        <td>
+                                            <center>
+                                                <a href="{{route('alumnos.edit', $alumno->id)}}">
+                                                    <button type="button" class="btn btn-outline-dark">Info completa</button>
+                                                </a>
+                                            </center>
+                                        </td>
+                                    </tr>
+                                 @endif
+                                @endforeach
+                                @endif
                             </tbody>
                     </div>
             </div>

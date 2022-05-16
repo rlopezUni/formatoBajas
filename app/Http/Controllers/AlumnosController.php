@@ -5,10 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\Alumno;
 use App\Models\Formato;
 use App\Models\Entrevista;
+use App\Models\Planteles;
 use PDF;
 use Illuminate\Http\Request;
 use App\Mail\MandarCorreo;
 use Mail;
+use Illuminate\Support\Facades\Auth;
+
 class AlumnosController extends Controller
 {
     /**
@@ -48,6 +51,7 @@ class AlumnosController extends Controller
         $registro->nombre = $request->nombre;
         $registro->apellido_paterno = $request->apellido_paterno;
         $registro->apellido_materno = $request->apellido_materno;
+        $registro->id_plantel = $request->plantel;
         $registro->correo = $request->correo;
         $registro->fecha = $request->fecha_clase;
         $registro->telefono_celular = $request->telefono_celular;
@@ -212,7 +216,9 @@ class AlumnosController extends Controller
 
     public function volver()
     {
-        return view('welcome');
+        $planteles = new Planteles();
+        $planteles = $planteles->all();
+        return view('welcome', compact('planteles'));
     }
 
     public function audio(Request $request)

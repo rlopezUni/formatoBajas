@@ -14,9 +14,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
+Route::group(['middleware' => ['auth']], function () {
 Route::resources([
     'alumnos' => 'App\Http\Controllers\AlumnosController',
 ]);
@@ -24,6 +25,8 @@ Route::resources([
 Route::post('/mandarAudio', 'App\Http\Controllers\AlumnosController@audio')->name('audio');
 Route::get('/descargaAudio/{id}', 'App\Http\Controllers\AlumnosController@descargar_audio')->name('alumno.audio');
 Route::get('/consulta/','App\Http\Controllers\AlumnosController@volver')->name('volver');
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+});
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', 'App\Http\Controllers\AlumnosController@volver')->name('dashboard');
+
+

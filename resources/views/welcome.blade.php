@@ -1,4 +1,4 @@
-<x-guest-layout>
+<x-app-layout>
     <x-slot name="header">
 
     </x-slot>
@@ -16,20 +16,23 @@
                                 <h3>UNIVER: Formato de baja</h3>
                             </center>
                         </div>
-                            <br>
+                        <br>
+                        <div class="col-md-4">
                             <a href="{{route('alumnos.index')}}">
                                 <button type="button" class="btn btn-dark">Alumnos registrados</button>
                             </a>
-                            <br>
+                        </div>
+                        <br>
                         <form method="POST" action="{{ route('alumnos.store') }}" aria-label="{{ __('qr') }}" enctype="multipart/form-data">
                             @csrf
-                            <select name="listaDeDispositivos" id="listaDeDispositivos"></select>
-                            <br><br>
-                            <p id="duracion"></p>
-                            <br>
-                            <button id="btnComenzarGrabacion">Comenzar</button>
-                            <button id="btnDetenerGrabacion">Detener</button>
-
+                            <div class="col-md-4">
+                                <select name="listaDeDispositivos" id="listaDeDispositivos"></select>
+                                <br><br>
+                                <p id="duracion"></p>
+                                <br>
+                                <button class="btn btn-outline-primary" id="btnComenzarGrabacion">Comenzar</button>
+                                <button class="btn btn-outline-primary" id="btnDetenerGrabacion">Detener</button>
+                            </div>
 
 
                             <div class="card-body">
@@ -61,13 +64,9 @@
                                     <div class="col-md-4">
                                         <label for="plantel">Plantel</label>
                                         <select  required autofocus id="plantel" name="plantel" class="form-control"data-live-search="true">
-                                            <option  value="TLAQUEPAQUE">TLAQUEPAQUE</option>
-                                            <option  value="AVILA CAMACHO">AVILA CAMACHO</option>
-                                            <option  value="CENTRO HISTORICO">CENTRO HISTORICO</option>
-                                            <option  value="JARDINES DEL BOSQUE">JARDINES DEL BOSQUE</option>
-                                            <option  value="LOMA BONITA">LOMA BONITA</option>
-                                            <option  value="TONALA">TONALA</option>
-                                            <option  value="ONLINE">ONLINE</option>
+                                            @foreach($planteles as $plantel)
+                                            <option  value="{{$plantel->id}}">{{$plantel->nombre_plantel}}</option>
+                                            @endforeach
                                         </select>
                                     </div>
 
@@ -608,4 +607,4 @@
             </div>
         </div>
     </div>
-</x-guest-layout>
+</x-app-layout>
