@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use App\Mail\MandarCorreo;
 use Mail;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class AlumnosController extends Controller
 {
@@ -24,6 +25,29 @@ class AlumnosController extends Controller
         $alumnos = new Alumno();
         $alumnos = $alumnos->all();
         return view('alumnos_bajas', compact('alumnos')); 
+    }
+
+    public function registro_usuarios()
+    {
+        $planteles = new Planteles();
+        $planteles = $planteles->all();
+        return view('registro', compact('planteles'));
+    }
+
+    public function usuario_proceso(Request $request)
+    {
+        $user = new User();
+        $user->name = $request->nombre;
+        $user->email = $request->correo;
+        $user->id_plantel = $request->plantel;
+        $user->id_rol = 2;
+        $user->password = bcrypt($request->contra);
+
+        $user->save();
+
+        $planteles = new Planteles();
+        $planteles = $planteles->all();
+        return view('welcome', compact('planteles'));
     }
 
     /**

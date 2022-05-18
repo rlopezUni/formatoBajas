@@ -32,8 +32,8 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @if(Auth::guest())
-                                @foreach($alumnos as $alumno)
+                                @if(Auth::user()->id_rol == 1)
+                                 @foreach($alumnos as $alumno)
                                     <tr>
                                         <td>{{$alumno->nombre}}</td>
                                         <td>{{$alumno->apellido_paterno}}</td>
@@ -61,10 +61,10 @@
                                             </center>
                                         </td>
                                     </tr>
-                                @endforeach
-                                @else
-                                @foreach($alumnos as $alumno)
-                                 @if($alumno->id_plantel == Auth::user()->id_plantel)
+                                 @endforeach
+                                @elseif(Auth::user()->id_rol >= 2)
+                                 @foreach($alumnos as $alumno)
+                                  @if($alumno->id_plantel == Auth::user()->id_plantel)
                                     <tr>
                                         <td>{{$alumno->nombre}}</td>
                                         <td>{{$alumno->apellido_paterno}}</td>

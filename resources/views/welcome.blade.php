@@ -21,6 +21,11 @@
                             <a href="{{route('alumnos.index')}}">
                                 <button type="button" class="btn btn-dark">Alumnos registrados</button>
                             </a>
+                            @if(Auth::user()->id_rol == 1)
+                            <a href="{{route('registrarUsuario')}}">
+                                <button type="button" class="btn btn-outline-success">Agregar usuario</button>
+                            </a>
+                            @endif
                         </div>
                         <br>
                         <form method="POST" action="{{ route('alumnos.store') }}" aria-label="{{ __('qr') }}" enctype="multipart/form-data">
