@@ -1,4 +1,4 @@
-<x-guest-layout>
+<x-app-layout>
     <x-slot name="header">
 
     </x-slot>
@@ -82,4 +82,4 @@
         </div>
     </div>
 
-</x-guest-layout>
+</x-app-layout>
