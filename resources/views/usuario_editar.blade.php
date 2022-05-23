@@ -14,32 +14,35 @@
                     <div class="card" style="box-shadow: 0 5px 5px 0 rgba(0,0,0,0.5);">
                         <div class="card-header">
                             <center>
-                                <h3>UNIVER: Registro de usuarios</h3>
+                                <h3>UNIVER: Edición de usuarios</h3>
                             </center>
                         </div>
 
-                        <form method="POST" action="{{ route('usuarioProceso') }}" aria-label="{{ __('usuario') }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('usuarioEdicion', $usuarios->id) }}" aria-label="{{ __('usuario') }}" enctype="multipart/form-data">
                             @csrf
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label for="correo">Correo electronico:</label>
-                                        <input type="correo" type="email" class="form-control" name="correo" autofocus required maxlength="100">
+                                        <input type="correo" type="email" class="form-control" value="{{$usuarios->email}}" name="correo" autofocus required maxlength="100">
                                     </div>
                                     <div class="col-md-6">
                                         <label for="nombre">Nombre:</label>
-                                        <input id="nombre" type="text" class="form-control" name="nombre" autofocus required maxlength="50">
+                                        <input id="nombre" type="text" class="form-control" value="{{$usuarios->name}}" name="nombre" autofocus required maxlength="50">
                                     </div>
                                     <div class="col-md-6">
                                         <label for="contra">Contraseña:</label>
-                                        <input id="contra" type="password" class="form-control" name="contra" autofocus required maxlength="50">
+                                        <input id="contra" type="password" placeholder="Si no va a cambiar la contraseña, dejar en blanco" class="form-control" name="contra" autofocus maxlength="50">
                                     </div>
                                     <div class="col-md-6">
                                         <label for="plantel">Plantel:</label>
-                                        <select required autofocus id="plantel" name="plantel" class="form-control"data-live-search="true">
-                                            <option value=""><--Escoge plantel--></option>
+                                        <select autofocus id="plantel" name="plantel" class="form-control selectpicker "data-live-search="true">
                                             @foreach($planteles as $plantel)
-                                                <option value="{{$plantel->id}}">{{$plantel->nombre_plantel}}</option>
+                                                @if($usuarios->id_plantel == $plantel->id)
+                                                    <option selected value="{{$plantel->id}}">{{$plantel->nombre_plantel}}</option>
+                                                 @else
+                                                    <option value="{{$plantel->id}}">{{$plantel->nombre_plantel}}</option>
+                                                @endif
                                             @endforeach
                                         </select>
                                     </div> 

@@ -6,7 +6,17 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>{{ config('app.name', 'Laravel') }}</title>
+         <link rel="stylesheet" href="{{asset('/bootstrap4/dist/css/bootstrap.min.css')}}" crossorigin="anonymous">
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="{{asset('/menu/style5.css')}}">
+    <script src="{{asset('/js/jquery/jquery-3.3.1.slim.min.js')}}" crossorigin="anonymous"></script>
+    <!-- Popper.JS -->
+    <script src="{{asset('/js/popper/popper.min.js')}}" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="{{asset('/bootstrap4/dist/js/bootstrap.min.js')}}" crossorigin="anonymous"></script>
 
+    <!-- Font Awesome JS -->
+    <script defer src="{{asset('/fontawesome/js/all.js')}}" crossorigin="anonymous"></script>
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 

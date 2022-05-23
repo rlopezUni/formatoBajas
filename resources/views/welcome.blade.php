@@ -17,13 +17,18 @@
                             </center>
                         </div>
                         <br>
-                        <div class="col-md-4">
+                        <div class="col-md-8">
                             <a href="{{route('alumnos.index')}}">
                                 <button type="button" class="btn btn-dark">Alumnos registrados</button>
                             </a>
                             @if(Auth::user()->id_rol == 1)
                             <a href="{{route('registrarUsuario')}}">
                                 <button type="button" class="btn btn-outline-success">Agregar usuario</button>
+                            </a>
+                            @endif
+                            @if(Auth::user()->id_rol == 1)
+                            <a href="{{route('listaUsuarios')}}">
+                                <button type="button" class="btn btn-outline-success">Lista de usuarios</button>
                             </a>
                             @endif
                         </div>

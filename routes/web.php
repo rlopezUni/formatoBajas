@@ -27,6 +27,9 @@ Route::get('/descargaAudio/{id}', 'App\Http\Controllers\AlumnosController@descar
 Route::get('/consulta/','App\Http\Controllers\AlumnosController@volver')->name('volver');
 Route::get('/registroUsuarios', 'App\Http\Controllers\AlumnosController@registro_usuarios')->name('registrarUsuario');
 Route::post('/usuarioRegistro', 'App\Http\Controllers\AlumnosController@usuario_proceso')->name('usuarioProceso');
+Route::get('/listaUsuarios', 'App\Http\Controllers\AlumnosController@usuariosLista')->name('listaUsuarios');
+Route::get('/editarUsuarios/{id}', 'App\Http\Controllers\AlumnosController@UserEditar')->name('editarUsuarios');
+Route::post('/usuarioActualizacion/{id}', 'App\Http\Controllers\AlumnosController@usuariosEditar')->name('usuarioEdicion');
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', 'App\Http\Controllers\AlumnosController@volver')->name('dashboard');

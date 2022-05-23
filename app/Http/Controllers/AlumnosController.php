@@ -6,12 +6,14 @@ use App\Models\Alumno;
 use App\Models\Formato;
 use App\Models\Entrevista;
 use App\Models\Planteles;
+use App\Models\Roles;
 use PDF;
 use Illuminate\Http\Request;
 use App\Mail\MandarCorreo;
 use Mail;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 
 class AlumnosController extends Controller
 {
@@ -42,6 +44,60 @@ class AlumnosController extends Controller
         $user->id_plantel = $request->plantel;
         $user->id_rol = 2;
         $user->password = bcrypt($request->contra);
+
+        $user->save();
+
+        $planteles = new Planteles();
+        $planteles = $planteles->all();
+        return view('welcome', compact('planteles'));
+    }
+
+    public function usuariosLista()
+    {
+        $usuarios = new user();
+        $usuarios = $usuarios->all();
+        $planteles = new Planteles();
+        $planteles = $planteles->all();
+        $roles = new Roles();
+        $roles = $roles->all();
+
+        /*
+        $usuarios = DB::table('users')
+        ->join('planteles','planteles.id' ,'=', 'users.id_plantel')->select('*')
+        ->join('roles','roles.id' ,'=', 'users.id_rol')->select('*')
+        ->get();
+        */
+
+        /*
+        SELECT * FROM users 
+        JOIN planteles on planteles.id = users.id_plantel
+        JOIN roles on roles.id = users.id_rol
+        */
+
+        return view('usuario_index',compact('usuarios','planteles','roles'));
+    }
+
+    public function UserEditar($id)
+    {
+        $usuarios = User::findorfail($id);
+        $planteles = Planteles::all();
+
+        return view('usuario_editar',compact('usuarios','planteles'));
+    }
+
+    public function usuariosEditar(Request $request, $id)
+    {
+        $user = User::findorfail($id);
+        $user->name = $request->nombre;
+        $user->email = $request->correo;
+        if($request->plantel)
+        {
+            $user->id_plantel = $request->plantel;
+        }
+        if($request->contra)
+        {
+            $user->password = bcrypt($request->contra);
+        }
 
         $user->save();
 
